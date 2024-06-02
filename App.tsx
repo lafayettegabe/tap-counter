@@ -1,20 +1,32 @@
+import { StyleSheet, Text, Pressable, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
 
 export default function App() {
+  const [count, setCount] = useState(0);
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Pressable style={styles.pressable} onPress={() => setCount(count + 1)}>
+      <View style={styles.container}>
+        <StatusBar style="light" />
+        <Text style={styles.text}>{count}</Text>
+      </View>
+    </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
+  pressable: {
+    flex: 1,
+    backgroundColor: '#000',
+  },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#000',
+  },
+  text: {
+    color: 'white',
+    fontSize: 40,
   },
 });
